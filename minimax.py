@@ -9,8 +9,6 @@ and as such I will calculate the first few thousand first, and then add based on
 NOTE: AI player is hardcoded to white
 """
 
-# This will be used to store the hashtable
-import pickle
 # This is used to get possible moves
 from validation import possible_move
 # For the weightings
@@ -30,6 +28,9 @@ def start_game() -> dict:
     """Loads the hashtable
     :return Dict: """
     try:
+        import pickle
+    try:
+
         with open('minimax_hashtable.pkl', 'rb') as file:
             return pickle.load(file)
     except FileNotFoundError:
@@ -42,8 +43,12 @@ def end_game(hash_table: dict) -> None:
     :param hash_table:
     :return None:
     """
-    with open('minimax_hashtable.pkl', 'wb') as file:
-        pickle.dump(hash_table, file)
+    try:
+        import pickle
+        with open('minimax_hashtable.pkl', 'wb') as file:
+            pickle.dump(hash_table, file)
+    except:
+        pass
 
 
 def check_terminal_node(board: list) -> bool:
