@@ -28,8 +28,8 @@ def check_for_kings(board: list) -> str:
     king1_check = []
     king2_check = []
     for row in board:
-        king1_check.append(False if 'K1' not in row else True)
-        king2_check.append(False if 'K2' not in row else True)
+        king1_check.append(not 'K1' not in row)
+        king2_check.append(not 'K2' not in row)
     if not any(king2_check):
         return 'W'
     if not any(king1_check):
